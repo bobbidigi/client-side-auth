@@ -1,8 +1,10 @@
 import "./App.css"
 import React from "react"
 import {Link, Route} from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
 import Signin from './Signin'
 import Account from './Account'
+
 
 function App() {
 	return (
@@ -13,7 +15,7 @@ function App() {
 				<Link to="/account">My Account</Link>
 			</nav>
 			<Route exact path='/signin' component={Signin}/>
-			<Route exact path='/account' component={Account}/>
+			<ProtectedRoute exact path='/account' component={Account}/>
 		</div>
 	)
 }
