@@ -4,13 +4,16 @@ import api from '../utils/api'
 
 export default function Account(props) {
 
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+    })
 
-    useEffect(() =>{
+    useEffect(() => {
         api().get("/me")
         .then(result => {
             setUser({
-                name: result.config.data.name,
+                name: result.data.name,
                 email: result.data.email,
             })
         })
@@ -21,7 +24,9 @@ export default function Account(props) {
 
     return (
         <div>
-            
+            <h1>My Account</h1>
+            <div className="account-row">Name: {user.name}</div>
+            <div className="account-row">Email: {user.email}</div>
         </div>
     )
 }
